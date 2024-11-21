@@ -21,21 +21,84 @@ function App() {
   };
 
   // Handle form submission
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   try {
+  //     // console.log(response.jsonData);
+  //     // Parse JSON input to validate
+  //     const data = JSON.parse(jsonData);
+      
+  //     // Make a POST request to your backend API endpoint
+  //     const response = await axios.post('https://bajaj-c8ox.onrender.com/bfhl', { data });
+
+  //     setResponseData(response.data);
+  //     setError(''); // Clear any previous errors
+  //   } catch (err) {
+  //     setError('Invalid JSON input or server error');
+  //   }
+  // };
+
+
+
+
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   try {
+  //     const parsedData = JSON.parse(jsonData); // Parse JSON input to validate
+  //     const payload = {
+  //       data: parsedData.data, // Use `parsedData` instead of `data` directly
+  //       file_b64: parsedData.file_b64
+  //     };
+      
+  //     // Make a POST request to your backend API endpoint
+  //     const response = await axios.post('https://bajaj-c8ox.onrender.com/bfhl', payload);
+
+  //     setResponseData(response.data);
+  //     setError(''); // Clear any previous errors
+  //   } catch (err) {
+  //     setError('Invalid JSON input or server error');
+  //   }
+  // };
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      // Parse JSON input to validate
-      const data = JSON.parse(jsonData);
-      
-      // Make a POST request to your backend API endpoint
-      const response = await axios.post('https://http://localhost:5000/bfhl', { data });
+        // Parse JSON input to validate and ensure data is an array
+        const parsedData = JSON.parse(jsonData);
+        
+        if (!Array.isArray(parsedData.data)) {
+            throw new Error("The 'data' field should be an array");
+        }
 
-      setResponseData(response.data);
-      setError(''); // Clear any previous errors
+        const payload = {
+            data: parsedData.data, // Ensure data is an array, not a string
+            file_b64: parsedData.file_b64 // Pass the Base64 encoded file string
+        };
+
+        // Make a POST request using fetch to your backend API endpoint
+        const response = await fetch('https://bajaj-c8ox.onrender.com/bfhl', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const responseData = await response.json();
+        console.log(responseData);
+        setResponseData(responseData); // Update state with response data
+        setError(''); // Clear any previous errors
     } catch (err) {
-      setError('Invalid JSON input or server error');
+        setError('Invalid JSON input or server error');
     }
-  };
+};
+
+
 
   // Filtered Response Rendering
   const renderFilteredResponse = () => {
@@ -60,6 +123,8 @@ function App() {
         </label>
         <button type="submit">Submit</button>
       </form>
+
+      
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
