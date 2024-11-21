@@ -6,7 +6,8 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-async-handler": "^1.2.0",
-    "is-base64": "^1.1.0"
+    "is-base64": "^1.1.0",
+    "nodemon": "^3.1.7"
   },
   "name": "y",
   "version": "1.0.0",
@@ -17,8 +18,5 @@
   },
   "author": "",
   "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "nodemon": "^3.1.7"
-  }
+  "description": ""
 }
