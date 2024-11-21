@@ -1,38 +1,110 @@
+/* App.css */
+
+/* General body styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7f6;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Main container for the app */
 .App {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Heading style */
+h1 {
+  color: #2d3b48;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Form input and button styles */
+form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  max-width: 400px;
+}
+
+button {
+  width: 50%;
+  padding: 10px;
+  background-color: #007bff;
   color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background-color: #0056b3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Error message */
+p {
+  color: red;
+  font-weight: bold;
+}
+
+/* Multi-select dropdown style */
+label {
+  font-size: 1rem;
+  margin-top: 20px;
+  color: #333;
+}
+
+select {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin: 10px 0;
+  max-width: 400px;
+}
+
+/* Filtered response section */
+h2 {
+  color: #2d3b48;
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+pre {
+  background-color: #f4f7f6;
+  padding: 15px;
+  border-radius: 4px;
+  font-size: 1rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-align: left;
+  color: #333;
+  max-width: 80%;
+  margin: 0 auto;
 }
