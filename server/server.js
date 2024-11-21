@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Utility Functions
 const isPrime = (num) => {
     if (num < 2) return false;
     for (let i = 2; i <= Math.sqrt(num); i++) {
